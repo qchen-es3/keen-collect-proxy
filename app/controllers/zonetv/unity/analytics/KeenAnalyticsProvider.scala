@@ -16,18 +16,11 @@ object KeenAnalyticsProvider {
   def collect(payload: Payload): Future[Unit] = {
     payload.collected = Calendar.getInstance().getTime
 
-    Future{
-      Logger.info("Waiting 5s")
-      Thread.sleep(5000)
-      Logger.info("Waited 5s")
-    }
-    /*
     this._keenClient.addEvent("unity_events", payload.toJson.toString()).map { response =>
       response.statusCode match{
         case i if 200 until 400 contains i => Logger.info(payload.event + " has been sent successfully.")
         case _ => Logger.error("Event "+ payload.event.get + " has failed: " + response.statusCode.toString + " " + response.body)
       }
     }
-    */
   }
 }
